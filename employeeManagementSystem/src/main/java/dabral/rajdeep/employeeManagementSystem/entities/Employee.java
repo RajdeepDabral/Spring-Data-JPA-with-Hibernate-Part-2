@@ -4,26 +4,25 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.io.Serializable;
 
 @Entity
 @Table(name="employeeTable")
 public class Employee {
 
     @Id
-    @Column(name="emp_id")
+    @Column(name="empId")
     private int id;
 
-    @Column(name="emp_first_name")
+    @Column(name="empFirstName")
     private String firstName;
 
-    @Column(name="emp_last_name")
+    @Column(name="empLastName")
     private String lastName;
 
-    @Column(name="emp_salary")
+    @Column(name="empSalary")
     private double salary;
 
-    @Column(name="emp_age")
+    @Column(name="empAge")
     private int age;
 
     public Employee(int id, String firstName, String lastName, double salary, int age) {
@@ -32,6 +31,8 @@ public class Employee {
         this.lastName = lastName;
         this.salary = salary;
         this.age = age;
+    }
+    public Employee(){
     }
 
     public int getId() {
@@ -84,7 +85,5 @@ public class Employee {
                 ", age=" + age +
                 '}';
     }
-    public Employee(){
 
-    }
 }
