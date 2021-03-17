@@ -31,11 +31,8 @@ order by emp_age asc , emp_salary desc
 parameter whose existing salary is less than the average salary.
 */
 
-update employeeTable 
-set empSalary=100
-having avg(empSalary)
-
-
+update dabral.rajdeep.employeeManagementSystem.entities.Employee set salary = :updateSalary
+where salary <select AvgSalary from (select avg(salary) as AvgSalary from Employee) as AvgSalaryDataTable
 
 
 

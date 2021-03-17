@@ -5,6 +5,7 @@ import dabral.rajdeep.employeeManagementSystem.repository.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -67,12 +68,14 @@ class EmployeeManagementSystemApplicationTests {
 	}
 
 
-//	@Test
-//	@Transactional
-//	@Rollback(false)
-//	public void testFindEmployeeBySalaryUpdateCondition(){
-//		employeeRepository.findEmployeeBySalaryUpdateCondition(1.0);
-//	}
+	@Test
+	@Transactional
+	@Rollback(false)
+	public void testUpdateEmployeeSalary(){
+		double averageSalary= employeeRepository.findEmployeesAverageSalary();
+		employeeRepository.findUpdateEmployeeSalary(1.0 ,averageSalary);
+		System.out.println("Salary updated!!!");
+	}
 
 	@Test
 	@Transactional
@@ -129,6 +132,11 @@ class EmployeeManagementSystemApplicationTests {
 		travelTablePerClass.save(bikeObject);
 		travelTablePerClass.save(carObject);
 	}
+
+	/*
+	9. Implement and demonstrate Embedded mapping using employee table having following fields: id, firstName,
+	   lastName, age, basicSalary, bonusSalary, taxAmount, specialAllowanceSalary.
+	 */
 
 	@Test
 	public void TestEmployeeComponentMapping(){

@@ -23,9 +23,13 @@ public interface EmployeeRepository extends CrudRepository<Employee, Integer> {
     2. Update salary of all employees by a salary passed as a parameter
         whose existing salary is less than the average salary.
     */
-//    @Modifying
-//    @Query("update Employee set salary = :updateSalary where salary < (select AvgSalary from (select Avg(salary) as AvgSalary from Employee) as AvgSalaryDataTable)")
-//    void findEmployeeBySalaryUpdateCondition(@Param("updateSalary") double sal);
+    @Query("select avg(salary) as avgSalary from Employee")
+    double findEmployeesAverageSalary();
+
+    @Modifying
+    @Query(" update Employee set salary = :updateSalary where salary < :averageSalary")
+    void findUpdateEmployeeSalary(@Param("updateSalary") double sal , @Param("averageSalary") double averageSal);
+
 
     /*
     3. Delete all employees with minimum salary.
